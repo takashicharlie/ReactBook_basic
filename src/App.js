@@ -1,11 +1,34 @@
-import React from "react";
+import React, {Component} from "react";
 import "./styles.css";
 
-export default function App() {
-  return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-    </div>
-  );
+class App extends Component {
+
+  msgStyle = {
+    fontSize: "20px"
+  }
+  btnStyle = {
+    fontSize: "20px"
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      msg: 'Hello',
+    };
+    let timer = setInterval(() => {
+      this.setState((state)=>({
+        msg: state.msg + "!"
+      }));
+    },3000);
+  }
+
+  render(){
+    return <div>
+      <h1>React</h1>
+      <p style={this.msgStyle}>{this.state.msg}</p>
+      <p style={this.msgStyle}>{this.props.msg}</p>
+    </div>;
+  }
 }
+
+export default App;
